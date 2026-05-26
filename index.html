@@ -742,9 +742,9 @@ function renderMatches(matches) {
 
     let scoreHtml;
     if (finished && endResult) {
-      scoreHtml = `<div class="score">${endResult.pointsTeam1} : ${endResult.pointsTeam2}<span class="fin-tag">FT</span></div>`;
+      scoreHtml = `<div class="score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}<span class="fin-tag">FT</span></div>`;
     } else if (endResult && (endResult.pointsTeam1 > 0 || endResult.pointsTeam2 > 0)) {
-      scoreHtml = `<div class="score">${endResult.pointsTeam1} : ${endResult.pointsTeam2}<span class="live-tag">LIVE</span></div>`;
+      scoreHtml = `<div class="score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}<span class="live-tag">LIVE</span></div>`;
     } else {
       scoreHtml = `<div class="score upcoming">${time}</div>`;
     }
@@ -800,13 +800,13 @@ function showMatchDetail(m) {
 
   let scoreBlock;
   if (endResult && (finished || endResult.pointsTeam1 > 0 || endResult.pointsTeam2 > 0)) {
-    scoreBlock = `<div class="detail-score">${endResult.pointsTeam1} : ${endResult.pointsTeam2}</div>`;
+    scoreBlock = `<div class="detail-score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}</div>`;
   } else {
     scoreBlock = `<div class="detail-score upcoming">${time}</div>`;
   }
 
   const halftimeHtml = halftime
-    ? `<div class="detail-halftime">Halbzeit · ${halftime.pointsTeam1} : ${halftime.pointsTeam2}</div>`
+    ? `<div class="detail-halftime">Halbzeit · ${halftime.pointsTeam1} - ${halftime.pointsTeam2}</div>`
     : '';
 
   const stadium = m.location
@@ -853,7 +853,7 @@ function showMatchDetail(m) {
           <div class="goal-scorer">${g.goalGetterName || 'Unbekannt'}</div>
           ${tags.length ? `<div class="goal-tags">${tags.join('')}</div>` : ''}
         </div>
-        <div class="goal-score-now">${g.scoreTeam1} : ${g.scoreTeam2}</div>
+        <div class="goal-score-now">${g.scoreTeam1} - ${g.scoreTeam2}</div>
       </div>`;
     }).join('') + `</div>`;
   }
@@ -997,6 +997,5 @@ async function init() {
 }
 init();
 </script>
-  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "88ed9b8fed9f4e65b802e3ffa7cff8fa"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
