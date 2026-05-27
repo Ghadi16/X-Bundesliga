@@ -225,13 +225,6 @@ main { max-width: 980px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
   min-width: 70px;
   text-align: center;
 }
-.score-sep {
-  font-size: 0.7em;
-  font-weight: 400;
-  opacity: 0.55;
-  margin: 0 0.35em;
-  vertical-align: middle;
-}
 .score.upcoming {
   font-family: 'Barlow', sans-serif;
   font-size: 0.95rem;
@@ -759,9 +752,9 @@ function renderMatches(matches) {
 
     let scoreHtml;
     if (finished && endResult) {
-      scoreHtml = `<div class="score">${endResult.pointsTeam1}<span class="score-sep">-</span>${endResult.pointsTeam2}<span class="fin-tag">FT</span></div>`;
+      scoreHtml = `<div class="score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}<span class="fin-tag">FT</span></div>`;
     } else if (endResult && (endResult.pointsTeam1 > 0 || endResult.pointsTeam2 > 0)) {
-      scoreHtml = `<div class="score">${endResult.pointsTeam1}<span class="score-sep">-</span>${endResult.pointsTeam2}<span class="live-tag">LIVE</span></div>`;
+      scoreHtml = `<div class="score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}<span class="live-tag">LIVE</span></div>`;
     } else {
       scoreHtml = `<div class="score upcoming">${time}</div>`;
     }
@@ -817,13 +810,13 @@ function showMatchDetail(m) {
 
   let scoreBlock;
   if (endResult && (finished || endResult.pointsTeam1 > 0 || endResult.pointsTeam2 > 0)) {
-    scoreBlock = `<div class="detail-score">${endResult.pointsTeam1}<span class="score-sep">-</span>${endResult.pointsTeam2}</div>`;
+    scoreBlock = `<div class="detail-score">${endResult.pointsTeam1} - ${endResult.pointsTeam2}</div>`;
   } else {
     scoreBlock = `<div class="detail-score upcoming">${time}</div>`;
   }
 
   const halftimeHtml = halftime
-    ? `<div class="detail-halftime">Halbzeit · ${halftime.pointsTeam1}<span class="score-sep">-</span>${halftime.pointsTeam2}</div>`
+    ? `<div class="detail-halftime">Halbzeit · ${halftime.pointsTeam1} - ${halftime.pointsTeam2}</div>`
     : '';
 
   const stadium = m.location
@@ -870,7 +863,7 @@ function showMatchDetail(m) {
           <div class="goal-scorer">${g.goalGetterName || 'Unbekannt'}</div>
           ${tags.length ? `<div class="goal-tags">${tags.join('')}</div>` : ''}
         </div>
-        <div class="goal-score-now">${g.scoreTeam1}<span class="score-sep">-</span>${g.scoreTeam2}</div>
+        <div class="goal-score-now">${g.scoreTeam1} - ${g.scoreTeam2}</div>
       </div>`;
     }).join('') + `</div>`;
   }
